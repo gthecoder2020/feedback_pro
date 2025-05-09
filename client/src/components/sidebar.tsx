@@ -1,10 +1,24 @@
 import { Link, useLocation } from "wouter";
 import { useAuth } from "@/hooks/use-auth";
 import { cn } from "@/lib/utils";
+import { 
+  PieChart, 
+  QrCode, 
+  Edit, 
+  MessageSquare, 
+  LineChart, 
+  Image, 
+  Store, 
+  Users, 
+  Settings, 
+  Crown, 
+  Gift, 
+  LogOut 
+} from "lucide-react";
 
 type NavItemProps = {
   href: string;
-  icon: string;
+  icon: React.ReactNode;
   label: string;
   current?: boolean;
 };
@@ -12,17 +26,17 @@ type NavItemProps = {
 function NavItem({ href, icon, label, current }: NavItemProps) {
   return (
     <Link href={href}>
-      <a
+      <div
         className={cn(
-          "flex items-center px-4 py-3 text-sm font-medium rounded-lg",
+          "flex items-center px-4 py-3 text-sm font-medium rounded-lg cursor-pointer",
           current
             ? "bg-primary-50 text-primary-700"
             : "text-gray-700 hover:bg-gray-100"
         )}
       >
-        <i className={`fas ${icon} mr-3 ${current ? "text-primary-500" : "text-gray-500"}`}></i>
+        <span className={`mr-3 ${current ? "text-primary-500" : "text-gray-500"}`}>{icon}</span>
         <span>{label}</span>
-      </a>
+      </div>
     </Link>
   );
 }
@@ -36,7 +50,7 @@ export function Sidebar() {
       <div className="p-6">
         <div className="flex items-center space-x-2">
           <span className="text-primary-600 text-2xl">
-            <i className="fas fa-comments"></i>
+            <MessageSquare size={24} />
           </span>
           <h1 className="font-bold text-xl text-gray-800">AIO Feedback</h1>
         </div>
@@ -45,49 +59,49 @@ export function Sidebar() {
       <nav className="flex-1 px-4 space-y-1 overflow-y-auto scrollbar-hide">
         <NavItem
           href="/"
-          icon="fa-chart-pie"
+          icon={<PieChart size={18} />}
           label="Dashboard"
           current={location === "/"}
         />
         <NavItem
           href="/qr-codes"
-          icon="fa-qrcode"
+          icon={<QrCode size={18} />}
           label="QR Codes"
           current={location === "/qr-codes"}
         />
         <NavItem
           href="/form-builder"
-          icon="fa-edit"
+          icon={<Edit size={18} />}
           label="Form Builder"
           current={location === "/form-builder"}
         />
         <NavItem
           href="/feedback"
-          icon="fa-comment-alt"
+          icon={<MessageSquare size={18} />}
           label="Feedback"
           current={location === "/feedback"}
         />
         <NavItem
           href="/analytics"
-          icon="fa-chart-line"
+          icon={<LineChart size={18} />}
           label="Analytics"
           current={location === "/analytics"}
         />
         <NavItem
           href="/media-gallery"
-          icon="fa-image"
+          icon={<Image size={18} />}
           label="Media Gallery"
           current={location === "/media-gallery"}
         />
         <NavItem
           href="/locations"
-          icon="fa-store"
+          icon={<Store size={18} />}
           label="Locations"
           current={location === "/locations"}
         />
         <NavItem
           href="/team"
-          icon="fa-users"
+          icon={<Users size={18} />}
           label="Team"
           current={location === "/team"}
         />
@@ -98,23 +112,20 @@ export function Sidebar() {
           </h3>
           <NavItem
             href="/settings"
-            icon="fa-cog"
+            icon={<Settings size={18} />}
             label="Settings"
             current={location === "/settings"}
           />
-          <a
-            href="#"
-            className="flex items-center px-4 py-3 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-100"
-          >
-            <i className="fas fa-crown mr-3 text-amber-500"></i>
+          <div className="flex items-center px-4 py-3 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-100 cursor-pointer">
+            <span className="mr-3 text-amber-500"><Crown size={18} /></span>
             <span>Upgrade Plan</span>
             <span className="ml-auto bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full">
               {user?.subscriptionPlan || "Free"}
             </span>
-          </a>
+          </div>
           <NavItem
             href="/rewards"
-            icon="fa-gift"
+            icon={<Gift size={18} />}
             label="Rewards"
             current={location === "/rewards"}
           />
@@ -136,7 +147,7 @@ export function Sidebar() {
             className="ml-auto text-gray-400 hover:text-gray-600"
             onClick={() => logoutMutation.mutate()}
           >
-            <i className="fas fa-sign-out-alt"></i>
+            <LogOut size={18} />
           </button>
         </div>
       </div>
