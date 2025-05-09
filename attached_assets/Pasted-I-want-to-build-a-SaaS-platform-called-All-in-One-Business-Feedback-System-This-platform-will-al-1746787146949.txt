@@ -1,0 +1,94 @@
+I want to build a SaaS platform called "All-in-One Business Feedback System".
+
+This platform will allow any business type (restaurants, retail stores, hotels, healthcare, service centers, salons, etc.) to collect, manage, and analyze customer feedback in a modern, customizable, and scalable way.
+
+✅ Core Platform Features:
+Business Registration & Login (supports multiple business branches/locations with latitude & longitude).
+
+Businesses can create unlimited QR codes for different service areas (example: reception, room cleaning, billing desk, food service).
+
+Each QR code links to a customizable feedback form using a drag-and-drop form builder.
+
+✅ Feedback Form Customization:
+Businesses can build their forms with these field types:
+
+Short Text Input
+
+Long Text Input
+
+Star Rating (1-5)
+
+Scale Rating (1-10)
+
+Image Upload
+
+Video Upload
+
+✅ Feedback Collection Flow:
+Customers scan QR code → feedback form opens (web-based, no app required).
+
+Customers can choose to submit feedback anonymously or with contact details.
+
+Businesses receive feedback in real time.
+
+✅ Business Dashboard Features:
+View & manage feedback submissions
+
+Analytics dashboard showing:
+
+Average star/scale ratings
+
+AI-powered sentiment analysis (positive/negative/neutral trend)
+
+Media gallery of customer photos/videos
+
+Alerts for negative feedback (auto-response option available)
+
+Businesses can reply to customer feedback
+
+✅ Admin (Super Admin) Features:
+Manage business accounts and users
+
+Setup subscription plans:
+
+Free
+
+Standard
+
+Premium
+(Each plan has feature limits like no. of QR codes, media uploads, analytics access)
+
+Platform-wide analytics dashboard (feedback trends across all businesses)
+
+Manage referral program and reward coins system.
+
+✅ Bonus Features:
+Coin-based reward system for customers (earn coins for feedback submission)
+
+Referral system for businesses (invite other businesses and earn credits)
+
+Push notifications using FCM (Firebase Cloud Messaging)
+
+Multi-language support (English, Malayalam, Hindi to start)
+
+✅ Technology Stack (Preferred):
+Frontend: Next.js + Tailwind CSS + React.js, drag-and-drop via dnd-kit
+
+Backend: Node.js (Express) + Prisma ORM
+
+Database: PostgreSQL
+
+Authentication: OTP-based (via Msg91 or similar service)
+
+QR Codes: Generated via qrcode npm library (or Google Charts API)
+
+AI Sentiment Analysis: Using HuggingFace transformers (or TensorFlow NLP)
+
+Notifications: Firebase Cloud Messaging (FCM)
+
+✅ Platform Goal:
+Launch this as a scalable SaaS solution for businesses in India (starting with Kerala), with architecture ready to expand globally.
+Design should be clean, minimal, mobile-responsive, with smooth drag-and-drop interactions and modern dashboard UI.
+
+✅ Request:
+Please suggest the best development roadmap and modular system architecture that ensures scalability, clean code structure (preferably monorepo), and best performance for a SaaS platform like this.
