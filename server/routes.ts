@@ -38,11 +38,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/locations", requireAuth, async (req, res) => {
+  app.post("/api/locations", requireAuth, async (req: Request, res: Response) => {
     try {
       const locationData = insertLocationSchema.parse({
         ...req.body,
-        businessId: req.user.id
+        businessId: (req as AuthenticatedRequest).user.id
       });
       const location = await storage.createLocation(locationData);
       res.status(201).json(location);
@@ -55,19 +55,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Forms routes
-  app.get("/api/forms", requireAuth, async (req, res) => {
+  app.get("/api/forms", requireAuth, async (req: Request, res: Response) => {
     try {
-      const forms = await storage.getFormsByBusinessId(req.user.id);
+      const forms = await storage.getFormsByBusinessId((req as AuthenticatedRequest).user.id);
       res.json(forms);
     } catch (err) {
       res.status(500).json({ message: (err as Error).message });
     }
   });
 
-  app.get("/api/forms/:id", requireAuth, async (req, res) => {
+  app.get("/api/forms/:id", requireAuth, async (req: Request, res: Response) => {
     try {
       const form = await storage.getForm(parseInt(req.params.id));
-      if (!form || form.businessId !== req.user.id) {
+      if (!form || form.businessId !== (req as AuthenticatedRequest).user.id) {
         return res.status(404).json({ message: "Form not found" });
       }
       res.json(form);
