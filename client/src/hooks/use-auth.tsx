@@ -29,6 +29,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   } = useQuery<Business | null, Error>({
     queryKey: ["/api/business"],
     queryFn: getQueryFn({ on401: "returnNull" }),
+    retry: false
   });
 
   const loginMutation = useMutation({

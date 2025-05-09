@@ -8,7 +8,6 @@ import QRCodesPage from "@/pages/qr-codes-page";
 import FormBuilderPage from "@/pages/form-builder-page";
 import FeedbackPage from "@/pages/feedback-page";
 import { ProtectedRoute } from "./lib/protected-route";
-import { AuthProvider } from "./hooks/use-auth";
 
 function Router() {
   return (
@@ -25,12 +24,10 @@ function Router() {
 
 function App() {
   return (
-    <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
-    </AuthProvider>
+    <TooltipProvider>
+      <Toaster />
+      <Router />
+    </TooltipProvider>
   );
 }
 
