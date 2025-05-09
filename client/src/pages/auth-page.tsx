@@ -146,7 +146,7 @@ export default function AuthPage() {
                       />
                       <Button 
                         type="submit" 
-                        className="w-full bg-primary-600 hover:bg-primary-700" 
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white" 
                         disabled={loginMutation.isPending}
                       >
                         {loginMutation.isPending ? (
@@ -166,7 +166,7 @@ export default function AuthPage() {
                       Don't have an account?{" "}
                       <Button 
                         variant="link" 
-                        className="p-0 text-primary-600" 
+                        className="p-0 text-blue-600" 
                         onClick={() => setActiveTab("register")}
                       >
                         Sign up here
@@ -255,7 +255,7 @@ export default function AuthPage() {
                       />
                       <Button 
                         type="submit" 
-                        className="w-full bg-primary-600 hover:bg-primary-700"
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                         disabled={registerMutation.isPending}
                       >
                         {registerMutation.isPending ? (
@@ -275,7 +275,7 @@ export default function AuthPage() {
                       Already have an account?{" "}
                       <Button 
                         variant="link" 
-                        className="p-0 text-primary-600" 
+                        className="p-0 text-blue-600" 
                         onClick={() => setActiveTab("login")}
                       >
                         Login here
@@ -290,7 +290,7 @@ export default function AuthPage() {
       </div>
       
       {/* Right column - Hero */}
-      <div className="w-full md:w-1/2 bg-primary-600 text-white hidden md:flex flex-col justify-center p-12">
+      <div className="w-full md:w-1/2 bg-blue-600 text-white hidden md:flex flex-col justify-center p-12">
         <div className="max-w-md mx-auto">
           <h2 className="text-3xl font-bold mb-6">Transform Your Customer Feedback Experience</h2>
           <div className="space-y-6">
@@ -300,7 +300,7 @@ export default function AuthPage() {
               </div>
               <div className="ml-4">
                 <h3 className="text-xl font-semibold">QR Code Feedback</h3>
-                <p className="mt-1 text-primary-100">Generate custom QR codes for different service areas to collect targeted feedback.</p>
+                <p className="mt-1 text-blue-100">Generate custom QR codes for different service areas to collect targeted feedback.</p>
               </div>
             </div>
             
@@ -310,7 +310,7 @@ export default function AuthPage() {
               </div>
               <div className="ml-4">
                 <h3 className="text-xl font-semibold">Drag-and-Drop Builder</h3>
-                <p className="mt-1 text-primary-100">Create custom feedback forms with our intuitive form builder.</p>
+                <p className="mt-1 text-blue-100">Create custom feedback forms with our intuitive form builder.</p>
               </div>
             </div>
             
@@ -320,7 +320,7 @@ export default function AuthPage() {
               </div>
               <div className="ml-4">
                 <h3 className="text-xl font-semibold">Powerful Analytics</h3>
-                <p className="mt-1 text-primary-100">Gain insights with AI-powered sentiment analysis and visualized feedback data.</p>
+                <p className="mt-1 text-blue-100">Gain insights with AI-powered sentiment analysis and visualized feedback data.</p>
               </div>
             </div>
             
@@ -330,7 +330,7 @@ export default function AuthPage() {
               </div>
               <div className="ml-4">
                 <h3 className="text-xl font-semibold">Multiple Locations</h3>
-                <p className="mt-1 text-primary-100">Manage feedback across all your business locations from one dashboard.</p>
+                <p className="mt-1 text-blue-100">Manage feedback across all your business locations from one dashboard.</p>
               </div>
             </div>
           </div>
