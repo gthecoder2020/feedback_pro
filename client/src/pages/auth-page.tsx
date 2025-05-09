@@ -335,16 +335,16 @@ export default function AuthPage() {
             </div>
           </div>
           
-          <div className="mt-10 text-sm text-primary-100">
+          <div className="mt-10 text-sm text-blue-100">
             <p>Join thousands of businesses collecting feedback with our platform.</p>
             <div className="flex mt-4 items-center">
               <div className="flex -space-x-2">
-                <div className="w-8 h-8 rounded-full bg-primary-400 flex items-center justify-center text-xs">SK</div>
-                <div className="w-8 h-8 rounded-full bg-primary-300 flex items-center justify-center text-xs">JT</div>
-                <div className="w-8 h-8 rounded-full bg-primary-200 flex items-center justify-center text-xs">MP</div>
-                <div className="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-700 text-xs">+</div>
+                <div className="w-8 h-8 rounded-full bg-blue-400 flex items-center justify-center text-xs">SK</div>
+                <div className="w-8 h-8 rounded-full bg-blue-300 flex items-center justify-center text-xs">JT</div>
+                <div className="w-8 h-8 rounded-full bg-blue-200 flex items-center justify-center text-xs">MP</div>
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 text-xs">+</div>
               </div>
-              <div className="ml-4 text-primary-100">
+              <div className="ml-4 text-blue-100">
                 <strong className="font-medium text-white">4.8/5</strong> from over 2,000 reviews
               </div>
             </div>
