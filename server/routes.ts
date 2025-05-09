@@ -1,4 +1,4 @@
-import type { Express } from "express";
+import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { setupAuth } from "./auth";
@@ -11,22 +11,27 @@ import {
   formFieldSchema
 } from "@shared/schema";
 
+// Extend Request to ensure req.user is handled properly
+interface AuthenticatedRequest extends Request {
+  user: Express.User;
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Sets up auth routes: /api/register, /api/login, /api/logout, /api/business
   setupAuth(app);
 
   // Require authentication for API routes
-  const requireAuth = (req: any, res: any, next: any) => {
-    if (!req.isAuthenticated()) {
+  const requireAuth = (req: Request, res: Response, next: NextFunction) => {
+    if (!req.isAuthenticated() || !req.user) {
       return res.status(401).json({ message: "Unauthorized" });
     }
     next();
   };
 
   // Location routes
-  app.get("/api/locations", requireAuth, async (req, res) => {
+  app.get("/api/locations", requireAuth, async (req: Request, res: Response) => {
     try {
-      const locations = await storage.getLocationsByBusinessId(req.user.id);
+      const locations = await storage.getLocationsByBusinessId((req as AuthenticatedRequest).user.id);
       res.json(locations);
     } catch (err) {
       res.status(500).json({ message: (err as Error).message });
@@ -211,7 +216,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const avgRating = totalFeedback > 0 ? totalRating / totalFeedback : 0;
       
       // Calculate scan to response rate
-      const totalScans = qrCodes.reduce((sum, qr) => sum + qr.scanCount, 0);
+      const totalScans = qrCodes.reduce((sum, qr) => sum + (qr.scanCount || 0), 0);
       const responseRate = totalScans > 0 ? (totalFeedback / totalScans) * 100 : 0;
       
       // Calculate sentiment distribution
@@ -246,8 +251,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
 }
 
 // Simple sentiment analysis function based on rating and text
-function analyzeSentiment(response: any, rating?: number): 'Positive' | 'Neutral' | 'Negative' {
-  if (!rating) return 'Neutral';
+function analyzeSentiment(response: any, rating?: number | null): 'Positive' | 'Neutral' | 'Negative' {
+  if (rating === null || rating === undefined) return 'Neutral';
   
   if (rating >= 4) return 'Positive';
   if (rating <= 2) return 'Negative';
